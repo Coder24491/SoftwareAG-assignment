@@ -11,6 +11,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 -   Removal of duplicates in the sample data
 -   Entity with no 'parent' will become parent node
 -   Enity with parent value same as sys_id of another entity will become the child node
+-   Added extra entity to check a scenario - parent with no child elements
 
 ## Output
 
