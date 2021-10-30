@@ -34,27 +34,51 @@ export class NodeMakerService {
       if (element.sys_id && !element.parent) {
         this.resultArray.push(element);
       } else {
-        const childParentId = <any>element.parent;
-        this.resultArray.forEach((_item: any) => {
-          if (_item.sys_id === childParentId.value) {
-            if (_item.child) {
-              _item.child.push(element);
-            } else {
-              _item.child = [element];
-            }
-          } else {
-            if (_item.child) {
-              _item.child.forEach((_key: any) => {
-                if (_key.sys_id === childParentId.value) {
-                  _key.child = [element];
-                }
-              });
-            }
-          }
-        });
+        // if parent exists, construct child nodes
+        this.constructChildNodes(element);
       }
     });
 
     return this.resultArray;
+  }
+
+  /**
+   * @method: constructChildNodes
+   * @param: element object
+   * @description: This method uses the element passed and constructs child nodes
+   */
+  constructChildNodes(element: { parent: any; }) {
+    const childParentId = <any>element.parent;
+    this.resultArray.forEach((_item: any) => {
+      // check if the node to be added has parent = sys_id
+      if (_item.sys_id === childParentId.value) {
+        // if a child already exists, push it to the array
+        if (_item.child) {
+          _item.child.push(element);
+        } else {
+          // create a new child array for the first child element
+          _item.child = [element];
+        }
+      } else {
+        // if parent != sys_id
+        if (_item.child) {
+          this.constructSubChildNodes(_item, childParentId, element);
+        }
+      }
+    });
+  }
+
+  /**
+   * @method: constructSubChildNodes
+   * @param: item, childParentId, element object
+   * @description: This method constructs the sub child nodes
+   */
+  constructSubChildNodes(item: { child: any[]; }, childParentId: { value: String; }, element: { parent: any; }) {
+    item.child.forEach((_key: any) => {
+      // check if child node sys_id = parent value of existing child node
+      if (_key.sys_id === childParentId.value) {
+        _key.child = [element];
+      }
+    });
   }
 }
