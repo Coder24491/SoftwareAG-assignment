@@ -1,0 +1,6 @@
+<div class="leaf-node">
+    <div *ngFor="let data of nodeData;" class="leaf-node__item">
+        <span class="leaf-node__title">{{ data.name }}</span>
+        <span class="leaf-node__sub-title">{{ data.short_description || 'Description'}}</span>
+    </div>
+</div>
