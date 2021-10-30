@@ -12,3 +12,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 -   Entity with no 'parent' will become parent node
 -   Enity with parent value same as sys_id of another entity will become the child node
 
+## Output
+
+![alt text](https://github.com/Coder24491/SoftwareAG-assignment/blob/master/src/assets/output.png)
