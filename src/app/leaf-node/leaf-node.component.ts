@@ -1,15 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-leaf-node',
   templateUrl: './leaf-node.component.html',
   styleUrls: ['./leaf-node.component.scss']
 })
-export class LeafNodeComponent implements OnInit {
-  @Input() nodeData !: any;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class LeafNodeComponent {
+  @Input() nodeData!: any;
+  
+  constructor() {}
 }

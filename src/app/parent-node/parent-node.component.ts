@@ -1,17 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-parent-node',
   templateUrl: './parent-node.component.html',
   styleUrls: ['./parent-node.component.scss']
 })
-export class ParentNodeComponent implements OnInit {
-  @Input() parentNodeData !: any;
+export class ParentNodeComponent {
+  @Input() parentNodeData!: String;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() {}
 }

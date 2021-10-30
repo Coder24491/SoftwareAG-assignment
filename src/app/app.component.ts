@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LeafNode } from './interfaces/leafNode';
 import { NodeMakerService } from './services/node-maker.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { NodeMakerService } from './services/node-maker.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  nodeData: any;
+  nodeData: Array<LeafNode> = [];
 
   constructor(private nodeMakerService: NodeMakerService) {}
 
