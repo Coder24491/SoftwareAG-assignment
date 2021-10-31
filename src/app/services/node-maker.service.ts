@@ -30,6 +30,7 @@ export class NodeMakerService {
   constructData() {
     const serialisedData = this.removeDuplicates(data.result);
 
+    // get a list of all sys_id with index for mapping with child nodes
     const idList = serialisedData.reduce((pre, ele, index) => {
       pre[ele.sys_id] = index;
       return pre;
@@ -41,10 +42,10 @@ export class NodeMakerService {
         this.resultArray.push(item);
         return;
       }
-      // Use our mapping to locate the parent element in our data array
+      // Use the mapping to locate the parent element in the data array
       const parent = serialisedData[idList[item.parent.value]];
 
-      // Add our current el to its parent's `children` array
+      // Add the current el to its parent's `children` array
       parent.children = [...(parent.children || []), item];
     });
 
