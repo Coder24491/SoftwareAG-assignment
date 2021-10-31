@@ -4,5 +4,5 @@ export interface LeafNode {
   short_description: String;
   name: String;
   active: String;
-  child: any;
+  children: any;
 }

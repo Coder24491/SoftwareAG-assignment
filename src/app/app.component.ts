@@ -14,5 +14,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.nodeData = this.nodeMakerService.constructData();
+    console.log(this.nodeData);
   }
 }

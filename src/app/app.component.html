@@ -1,12 +1,12 @@
 <div class="app-container">
     <div *ngFor="let data of nodeData">
-        <div *ngIf="data.child; else nonChildNode">
+        <div *ngIf="data.children; else nonChildNode">
             <app-parent-node [parentNodeData]="data.name">
-                <div *ngIf="data.child.length > 1; else childNode">
-                    <div *ngFor="let item of data.child">
-                        <div *ngIf="item.child?.length >= 1; else innerChild">
+                <div *ngIf="data.children.length > 1; else childNode">
+                    <div *ngFor="let item of data.children">
+                        <div *ngIf="item.children?.length >= 1; else innerChild">
                             <app-parent-node [parentNodeData]="item.name">
-                                <app-leaf-node [nodeData]="item.child"></app-leaf-node>
+                                <app-leaf-node [nodeData]="item.children"></app-leaf-node>
                             </app-parent-node>
                         </div>
                         <ng-template #innerChild>
@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <ng-template #childNode>
-                    <app-leaf-node [nodeData]="data.child"></app-leaf-node>
+                    <app-leaf-node [nodeData]="data.children"></app-leaf-node>
                 </ng-template>
             </app-parent-node>
         </div>
